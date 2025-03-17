@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO-DO</title>
+  </head>
+  <body>
+    <h1>TO-DO</h1>
+    <h2>Nothing happens, without doing something</h2>
+    <input type="text" id = "variable" placeholder = "...">
+    <button onclick = "addTasks()">Neue Challange</button>
+
+    <ul id = taskList> </ul>
+
+
+  </body>
+</html>
+
+<script>
+
+    let tasks = [];
+
+    function addTasks() {
+
+        const taskInput = document.getElementById('variable');
+        const task = taskInput.value;
+
+        if (task) {
+            tasks.push(task);
+            taskInput.value = '';
+            renderTasks();
+            
+        }
+
+    }
+
+    function renderTasks() {
+
+        const taskList = document.getElementById('taskList');
+
+        taskList.innerHTML = '';
+
+        for(let i = 0; i < tasks.length; i++) {
+
+            const li = document.createElement('li')
+
+            li.textContent = tasks[i];
+            taskList.appendChild(li);
+        }
+
+
+
+
+
+    }
+</script>
