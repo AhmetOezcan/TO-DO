@@ -3,55 +3,132 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TO-DO</title>
-  </head>
-  <body>
-    <h1>TO-DO</h1>
-    <h2>Nothing happens, without doing something</h2>
-    <input type="text" id = "variable" placeholder = "...">
-    <button onclick = "addTasks()">Neue Challange</button>
+    <title>Your TO-DO List</title>
+    <style> 
+    
+    body {
+  background-color: rgb(221, 193, 156);
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  height: 100vh;
+  flex-direction: column;
+  padding: 60px 20px 0 20px;
+  background-image: url(New.jpg);
+  background-size: contain;
+  background-position: right center;
+  background-repeat: no-repeat;
+  font-family: 'Comic Sans MS';
+}
 
-    <ul id = taskList> </ul>
+
+    h1 { 
+      color: black;
+      size: 100px;
+
+    }
+    .add-button {
+      color:darkgoldenrod;
+      font-size: 20px;
+    }
+    .task-item {
+
+      color: black;
+      font-size: 40px;
+    }
+
+
+
+
+    .bild {
+      size: 100%;}
+
+    .dButton {
+      margin-left: 10px;
+      border: none;
+      background: none;
+      font-size: 40px;
+    }
+
+    .task-input {
+      color: black;
+      font-size: 25px;
+      border: none;
+    }
+
+    </style>
+  </head>
+  
+  <body>
+
+    <div class="content-container">
+      <div class="todo-area">
+        <table>
+          <tr>
+            <td><h1>Your TO-DO List</h1></td>
+          </tr>
+          <tr>
+            <td><h2>Nothing happens, without doing something</h2></td>
+          </tr>
+          <tr>
+            <td>
+              <input class="task-input" type="text" id="variable" placeholder="Neue Aufgabe..">
+              <button class="add-button" onclick="addTasks()">Hinzugügen</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <ul id="taskList"></ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+    
+    </div>
+
+
+    <script>
+
+      let tasks = [];
+  
+      function addTasks() {
+    const taskInput = document.getElementById('variable');
+    const task = taskInput.value;
+
+    if (task) {
+        tasks.push(task);
+        taskInput.value = '';
+        renderTasks();
+    }
+}
+
+// diese beiden müssen **außerhalb** von addTasks sein
+function removeTask(index) {
+    tasks.splice(index, 1);
+    renderTasks();
+}
+
+function renderTasks() {
+    const taskList = document.getElementById('taskList');
+    taskList.innerHTML = '';
+
+    for (let i = 0; i < tasks.length; i++) {
+        const li = document.createElement('li');
+        li.textContent = tasks[i];
+        li.classList.add("task-item");
+
+        const dButton = document.createElement('button');
+        dButton.textContent = "✔";
+        dButton.classList.add("dButton");
+        dButton.onclick = () => removeTask(i);
+
+        li.appendChild(dButton);
+        taskList.appendChild(li);
+    }
+}
+  </script>
 
 
   </body>
 </html>
 
-<script>
-
-    let tasks = [];
-
-    function addTasks() {
-
-        const taskInput = document.getElementById('variable');
-        const task = taskInput.value;
-
-        if (task) {
-            tasks.push(task);
-            taskInput.value = '';
-            renderTasks();
-            
-        }
-
-    }
-
-    function renderTasks() {
-
-        const taskList = document.getElementById('taskList');
-
-        taskList.innerHTML = '';
-
-        for(let i = 0; i < tasks.length; i++) {
-
-            const li = document.createElement('li')
-
-            li.textContent = tasks[i];
-            taskList.appendChild(li);
-        }
-
-
-
-
-
-    }
-</script>
