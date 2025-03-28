@@ -1,134 +1,296 @@
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Your TO-DO List</title>
-    <style> 
-    
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Your TO-DO List</title>
+
+  <style> 
+
     body {
-  background-color: rgb(221, 193, 156);
-  display: flex;
-  justify-content: left;
-  align-items: left;
-  height: 100vh;
-  flex-direction: column;
-  padding: 60px 20px 0 20px;
-  background-image: url(New.jpg);
-  background-size: contain;
-  background-position: right center;
-  background-repeat: no-repeat;
-  font-family: 'Comic Sans MS';
-}
 
+      background-color: lightblue;
 
-    h1 { 
-      color: black;
-      size: 100px;
+      display: flex;
+
+      justify-content: center;
+
+      align-items: flex-start;
+
+      height: 100vh;
+
+      margin: 0;
+
+      font-family: 'Comic Sans MS', cursive;
 
     }
-    .add-button {
-      color:darkgoldenrod;
-      font-size: 20px;
+
+
+    .content-container {
+
+      background-color: white;
+
+      border-radius: 15px;
+
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+      width: 100%;
+
+      max-width: 600px;
+
+      padding: 50px;
+
+      text-align: center;
+
+      margin-top: 50px;
+
+      box-sizing: border-box;
+
     }
-    .task-item {
 
-      color: black;
-      font-size: 40px;
+
+    h1 {
+
+      color: #2c3e50;
+
+      font-size: 3em; /* Größere Schriftgröße */
+
+      margin-bottom: 20px; /* Mehr Abstand */
+
     }
 
 
+    h2 {
 
+      color: #7f8c8d;
 
-    .bild {
-      size: 100%;}
+      font-size: 1.5em; /* Größere Schriftgröße */
 
-    .dButton {
-      margin-left: 10px;
-      border: none;
-      background: none;
-      font-size: 40px;
+      margin-bottom: 30px; /* Mehr Abstand */
+
     }
+
 
     .task-input {
-      color: black;
-      font-size: 25px;
+
+      width: 80%;
+
+      padding: 15px; /* Mehr Padding */
+
+      font-size: 1.5em; /* Größere Schriftgröße */
+
+      border: 2px solid #bdc3c7;
+
+      border-radius: 10px;
+
+      margin-bottom: 30px; /* Mehr Abstand */
+
+      outline: none;
+
+      transition: border-color 0.3s;
+
+    }
+
+
+    .task-input:focus {
+
+      border-color: #3498db;
+
+    }
+
+
+    .add-button {
+
+      padding: 15px 25px; /* Größere Schaltfläche */
+
+      font-size: 1.5em; /* Größere Schriftgröße */
+
+      background-color: #3498db;
+
+      color: white;
+
       border: none;
+
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      transition: background-color 0.3s;
+
     }
 
-    </style>
-  </head>
-  
-  <body>
 
-    <div class="content-container">
-      <div class="todo-area">
-        <table>
-          <tr>
-            <td><h1>Your TO-DO List</h1></td>
-          </tr>
-          <tr>
-            <td><h2>Nothing happens, without doing something</h2></td>
-          </tr>
-          <tr>
-            <td>
-              <input class="task-input" type="text" id="variable" placeholder="Neue Aufgabe..">
-              <button class="add-button" onclick="addTasks()">Hinzugügen</button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <ul id="taskList"></ul>
-            </td>
-          </tr>
-        </table>
-      </div>
-    
-    </div>
+    .add-button:hover {
+
+      background-color: #2980b9;
+
+    }
 
 
-    <script>
+    ul {
 
-      let tasks = [];
-  
-      function addTasks() {
-    const taskInput = document.getElementById('variable');
-    const task = taskInput.value;
+      list-style-type: none;
 
-    if (task) {
+      padding: 0;
+
+      margin-top: 40px; /* Mehr Abstand */
+
+    }
+
+
+    .task-item {
+
+      color: #34495e;
+
+      font-size: 1.8em; /* Größere Schriftgröße */
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      background-color: #ecf0f1;
+
+      padding: 15px 20px; /* Mehr Padding */
+
+      border-radius: 10px;
+
+      margin-bottom: 15px; /* Mehr Abstand */
+
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      transition: background-color 0.3s;
+
+    }
+
+
+    .task-item:hover {
+
+      background-color: #bdc3c7;
+
+    }
+
+
+    .dButton {
+
+      font-size: 2em; /* Größere Schaltfläche */
+
+      color: black;
+
+      background: none;
+
+      border: none;
+
+      cursor: pointer;
+
+      transition: color 0.3s;
+
+    }
+
+
+    .dButton:hover {
+
+      color: green;
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <div class="content-container">
+
+    <h1>Your TO-DO List</h1>
+
+    <h2>Nothing happens, without doing something</h2>
+
+    <input class="task-input" type="text" id="variable" placeholder="Neue Aufgabe..">
+
+    <button class="add-button" onclick="addTasks()">Hinzufügen</button>
+
+    <ul id="taskList"></ul>
+
+  </div>
+
+
+  <script>
+
+    let tasks = [];
+
+
+    function addTasks() {
+
+      const taskInput = document.getElementById('variable');
+
+      const task = taskInput.value.trim();
+
+
+      if (task) {
+
         tasks.push(task);
+
         taskInput.value = '';
+
         renderTasks();
+
+      }
+
     }
-}
 
-// diese beiden müssen **außerhalb** von addTasks sein
-function removeTask(index) {
-    tasks.splice(index, 1);
-    renderTasks();
-}
 
-function renderTasks() {
-    const taskList = document.getElementById('taskList');
-    taskList.innerHTML = '';
+    function removeTask(index) {
 
-    for (let i = 0; i < tasks.length; i++) {
+      tasks.splice(index, 1);
+
+      renderTasks();
+
+    }
+
+
+    function renderTasks() {
+
+      const taskList = document.getElementById('taskList');
+
+      taskList.innerHTML = '';
+
+
+      tasks.forEach((task, index) => {
+
         const li = document.createElement('li');
-        li.textContent = tasks[i];
+
         li.classList.add("task-item");
 
+        li.textContent = task;
+
+
         const dButton = document.createElement('button');
+
         dButton.textContent = "✔";
+
         dButton.classList.add("dButton");
-        dButton.onclick = () => removeTask(i);
+
+        dButton.onclick = () => removeTask(index);
+
 
         li.appendChild(dButton);
+
         taskList.appendChild(li);
+
+      });
+
     }
-}
+
   </script>
 
+</body>
 
-  </body>
 </html>
-
